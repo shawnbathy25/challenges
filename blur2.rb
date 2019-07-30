@@ -22,12 +22,16 @@ class Image
           blur_coords << [i, row_i] if x == 1
         end
       end
+       puts blur_coords.inspect
 
       blur_coords.each do |coord|
-        @picture[coord[0]][coord[1] + 1] = 1 if coord[1] + 1 <= @picture[coord[0]].length - 1
-        @picture[coord[0]][coord[1] - 1] = 1 if coord[1] - 1 >= 0
-        @picture[coord[0] + 1][coord[1]] = 1 if coord[0] + 1 <= @picture.length - 1
-        @picture[coord[0] - 1][coord[1]] = 1 if coord[0] - 1 >= 0
+        row_index = coord[0]
+        col_index = coord[1]
+
+        @picture[row_index][col_index + 1] = 1 if col_index + 1 <= @picture[row_index].length - 1
+        @picture[row_index][col_index - 1] = 1 if col_index - 1 >= 0
+        @picture[row_index + 1][col_index] = 1 if row_index + 1 <= @picture.length - 1
+        @picture[row_index - 1][col_index] = 1 if row_index - 1 >= 0
       end
     end
 
@@ -40,7 +44,7 @@ image = Image.new([
   [0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0],
   [0, 1, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 1, 0],
   [0, 0, 0, 0, 0, 0]
 ])
 image.blur_coords!

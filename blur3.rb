@@ -15,7 +15,7 @@ class Image
    end
   end
 
-    def blur!(distance=1)
+    def blur!(distance=2)
     distance.times do
       blur_coords!
     end
@@ -44,10 +44,10 @@ class Image
 end
 
 image = Image.new([
-  [0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0],
   [0, 1, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 1, 0],
   [0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0]
 ])
